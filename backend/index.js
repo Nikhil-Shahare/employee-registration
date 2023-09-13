@@ -29,6 +29,9 @@ app.use("/DeliveryBoy",getoneemployee)
 app.use("/DeliveryBoy",updateEmployee)
 app.use("/DeliveryBoy",deleteEmployee)
 
+app.get("/",(req,res)=>{
+  res.send("Hare Krishna")
+})
 
 
 
