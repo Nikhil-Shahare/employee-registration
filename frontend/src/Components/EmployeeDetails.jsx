@@ -1,12 +1,12 @@
 // EmployeeDetails.js
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams,useNavigate } from 'react-router-dom';
 import axios from 'axios';
-
+import "./EmployDetails.css"
 const EmployeeDetails = () => {
   const { id } = useParams();
   const [employee, setEmployee] = useState({});
-
+ const navigate = useNavigate();
   useEffect(() => {
     // Fetch employee details based on the ID from the URL parameter
     axios
@@ -19,19 +19,24 @@ const EmployeeDetails = () => {
       });
   }, [id]);
 
+  const handleClick = ()=>{
+    navigate("/employee")
+  }
+
   return (
     <div className="employee-details">
       <h1>Employee Details</h1>
       <div className="employee-info">
-        <h2>Name: {`${employee.first_name} ${employee.last_name}`}</h2>
-        <p>Date of Birth (DOB): {employee.DOB}</p>
-        <p>Education: {employee.study}</p>
-        <p>Start Date: {employee.start_date}</p>
-        <p>End Date: {employee.end_date}</p>
-        <p>Current Salary: {employee.salary}</p>
+        <h2>Name: {`${employee.firstName} ${employee.lastName}`}</h2>
+        <p>Date of Birth (DOB): {employee.dob}</p>
+        <p>Education: {employee.education}</p>
+        <p>Start Date: {employee.startDate}</p>
+        <p>End Date: {employee.endDate}</p>
+        <p>Current Salary: {employee.currentSalary}</p>
         <p>Description:</p>
         <div dangerouslySetInnerHTML={{ __html: employee.description }} />
       </div>
+      <button className='button' onClick={handleClick}>go back</button>
     </div>
   );
 };

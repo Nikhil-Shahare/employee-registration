@@ -1,0 +1,34 @@
+h1{
+    font-size: var(--font-size-26xl);
+    line-height: 140%;
+    color: var(--dark-blue-01);
+    font-family: var(--font-montserrat) ; 
+}
+
+.holder{
+margin: 115px 300px;
+display: flex;
+flex-direction: column;
+
+}
+
+.table-holder{
+    border-radius: var(--br-16xl);
+    border-color: #D5D5D5;
+    
+}
+
+.employee-table {
+    border: 3px solid #D5D5D5;
+    border-radius: var(--br-16xl);
+    padding: 100px 0px;
+    width: 100%;
+}
+.employee-table tbody tr {
+    height: 100px; /* Adjust the height as needed */
+  text-align: center;  
+}
+
+  .employee-table td {
+    vertical-align: middle;
+  }

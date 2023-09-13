@@ -80,45 +80,50 @@ const Registration = () => {
                     {(formik) => (
 
                         <Form>
+                            <div className='wrapper'>
+
                             <div className='form-group'>
-                                <label htmlFor='firstName'>First Name:</label>
-                                <Field type='text' id='firstName' name='firstName' />
+                                <label htmlFor='firstName'>First Name*</label>
+                                <Field type='text' id='firstName' name='firstName' placeholder="Enter your name"/>
                                 <ErrorMessage name='firstName' component='div' className='error' />
                             </div>
 
                             <div className='form-group'>
-                                <label htmlFor='lastName'>Last Name:</label>
-                                <Field type='text' id='lastName' name='lastName' />
+                                <label htmlFor='lastName'>Last Name*</label>
+                                <Field type='text' id='lastName' name='lastName' placeholder="Enter your name" />
                                 <ErrorMessage name='lastName' component='div' className='error' />
                             </div>
 
+                            </div>
                             <div className='form-group'>
-                                <label htmlFor='dob'>Date of Birth (DOB):</label>
+                                <label htmlFor='dob'>DOB</label>
                                 <Field type='date' id='dob' name='dob' />
                                 <ErrorMessage name='dob' component='div' className='error' />
                             </div>
 
                             <div className='form-group'>
-                                <label htmlFor='education'>Education:</label>
-                                <Field type='text' id='education' name='education' />
+                                <label htmlFor='education'>Study</label>
+                                <Field type='text' id='education' name='education' placeholder ="B.E" />
                                 <ErrorMessage name='education' component='div' className='error' />
                             </div>
+<div className='wrapper'>
 
                             <div className='form-group'>
-                                <label htmlFor='startDate'>Start Date:</label>
+                                <label htmlFor='startDate'>Start Date</label>
                                 <Field type='date' id='startDate' name='startDate' />
                                 <ErrorMessage name='startDate' component='div' className='error' />
                             </div>
 
                             <div className='form-group'>
-                                <label htmlFor='endDate'>End Date:</label>
+                                <label htmlFor='endDate'>End Date</label>
                                 <Field type='date' id='endDate' name='endDate' />
                                 <ErrorMessage name='endDate' component='div' className='error' />
                             </div>
+</div>
 
                             <div className='form-group'>
-                                <label htmlFor='currentSalary'>Current Salary:</label>
-                                <Field type='number' id='currentSalary' name='currentSalary' />
+                                <label htmlFor='currentSalary'>Current Salary</label>
+                                <Field type='number' id='currentSalary' name='currentSalary' placeholder ="30000" />
                                 <ErrorMessage name='currentSalary' component='div' className='error' />
                             </div>
 
@@ -139,12 +144,13 @@ const Registration = () => {
                                 <button
                                     type='button'
                                     onClick={() => handleCancel(formik)}
+                                    className='button button-cancel'
                                 >
                                     Cancel
                                 </button>
 
-                                <button type='submit'>Save</button>
-                                {/* No need for a separate cancel button */}
+                                <button type='submit' className='button button-save'>Save</button>
+                        
                             </div>
                         </Form>
                     )}

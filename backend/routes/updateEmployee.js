@@ -3,7 +3,7 @@ const router = express.Router();
 const Employee = require("../models/employee");
 
 // Update an employee by ID
-router.put("/Update-Employee/:id", async (req, res) => {
+router.put("/update-employee/:id", async (req, res) => {
   try {
     // Find the employee by ID
     const employee = await Employee.findById(req.params.id);

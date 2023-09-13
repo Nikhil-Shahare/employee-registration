@@ -20,13 +20,14 @@ const createEmployee = require("./routes/createEmployee")
 const getEmployee = require("./routes/getEmployee")
 const getoneemployee = require("./routes/getoneemployee")
 const updateEmployee = require("./routes/updateEmployee")
-
+const deleteEmployee = require("./routes/deleteEmployee")
 //Routes
 app.use(express.json());
 app.use("/DeliveryBoy",createEmployee)
 app.use("/DeliveryBoy",getEmployee)
 app.use("/DeliveryBoy",getoneemployee)
 app.use("/DeliveryBoy",updateEmployee)
+app.use("/DeliveryBoy",deleteEmployee)
 
 
 

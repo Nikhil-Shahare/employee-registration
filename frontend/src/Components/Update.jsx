@@ -5,7 +5,8 @@ import ReactQuill from 'react-quill';
 import 'react-quill/dist/quill.snow.css';
 import './Registration.css';
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
+import {  useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const modules = {
   toolbar: [['bold', 'italic', 'underline'], [{ 'list': 'ordered' }, { 'list': 'bullet' }]],
@@ -23,8 +24,9 @@ const validationSchema = Yup.object({
   description: Yup.string().required('Description is required'),
 });
 
-const Updating = () => {
+const Update = () => {
   const { id } = useParams();
+  const navigate = useNavigate();
   const [employee, setEmployee] = useState({
     firstName: '',
     lastName: '',
@@ -63,8 +65,8 @@ const Updating = () => {
   const handleSubmit = async (values, { resetForm }) => {
     try {
       // Send the form data to your backend
-      const response = await axios.post(`http://localhost:4000/DeliveryBoy/update-Employee/${id}`, values);
-
+      const response = await axios.put(`http://localhost:4000/DeliveryBoy/update-Employee/${id}`, values);
+      navigate("/employee")
       // Check if the request was successful
       if (response.data.success) {
         console.log('Data sent successfully:', response.data);
@@ -74,6 +76,7 @@ const Updating = () => {
     } catch (error) {
       console.error('Error sending data:', error);
     }
+    
   };
 
   const handleCancel = (formik) => {
@@ -89,6 +92,8 @@ const Updating = () => {
         <Formik initialValues={employee} validationSchema={validationSchema} onSubmit={handleSubmit}  enableReinitialize={true}>
           {(formik) => (
             <Form>
+                            <div className='wrapper'>
+              
               <div className='form-group'>
                 <label htmlFor='firstName'>First Name:</label>
                 <Field type='text' id='firstName' name='firstName' />
@@ -100,7 +105,7 @@ const Updating = () => {
                 <Field type='text' id='lastName' name='lastName' />
                 <ErrorMessage name='lastName' component='div' className='error' />
               </div>
-
+</div>
               <div className='form-group'>
                 <label htmlFor='dob'>Date of Birth (DOB):</label>
                 <Field type='date' id='dob' name='dob' />
@@ -112,6 +117,7 @@ const Updating = () => {
                 <Field type='text' id='education' name='education' />
                 <ErrorMessage name='education' component='div' className='error' />
               </div>
+              <div className='wrapper'>
 
               <div className='form-group'>
                 <label htmlFor='startDate'>Start Date:</label>
@@ -124,7 +130,7 @@ const Updating = () => {
                 <Field type='date' id='endDate' name='endDate' />
                 <ErrorMessage name='endDate' component='div' className='error' />
               </div>
-
+</div>
               <div className='form-group'>
                 <label htmlFor='currentSalary'>Current Salary:</label>
                 <Field type='number' id='currentSalary' name='currentSalary' />
@@ -145,11 +151,16 @@ const Updating = () => {
               </div>
 
               <div className='form-buttons'>
-                <button type='button' onClick={() => handleCancel(formik)}>
+                <button type='button'
+                className='button button-cancel'
+                onClick={() => handleCancel(formik)}>
                   Cancel
                 </button>
 
-                <button type='submit'>Save</button>
+                <button 
+                type='submit'
+                className='button button-save'
+                >Save</button>
               </div>
             </Form>
           )}
@@ -159,4 +170,4 @@ const Updating = () => {
   );
 };
 
-export default Updating;
+export default Update;
